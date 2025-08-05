@@ -1,146 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UV STORE - Coming Soon</title>
+  <title>UV STORE</title>
   <style>
     body {
-      margin: 0;
-      font-family: "Times New Roman", serif;
-      background: linear-gradient(to bottom right, #e5e4e2, #d3d3d3, #f5f5f5);
-      color: #111;
-    }
-
-    header {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
-      padding: 40px 20px 10px 20px;
-    }
-
-    header img {
-      width: 120px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-
-    header h1 {
-      font-size: 28px;
-      font-weight: bold;
       margin: 0;
+      padding: 0;
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: #ffffffcc;
-      padding: 10px 0;
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      letter-spacing: 2px;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      margin-bottom: 50px;
+    }
+
+    .home-message {
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: 40px auto;
+      line-height: 1.8em;
+    }
+
+    .designs {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
+      margin: 60px 20px;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
+    .designs img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 10px;
     }
 
-    section {
-      padding: 40px 20px;
-      text-align: center;
+    .subscribe {
+      margin: 60px 20px;
     }
 
-    .gallery img {
-      width: 300px;
-      margin: 10px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    form {
-      margin-top: 20px;
-    }
-
-    form input[type="email"] {
+    .subscribe input[type="email"] {
       padding: 10px;
       width: 250px;
-      margin-right: 10px;
-      border-radius: 8px;
-      border: 1px solid #aaa;
+      border: none;
+      border-radius: 5px;
     }
 
-    form input[type="submit"] {
+    .subscribe button {
       padding: 10px 20px;
-      background-color: #999;
-      color: white;
+      margin-left: 10px;
+      background-color: white;
+      color: black;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-
-    a.social {
-      display: inline-block;
-      margin-top: 10px;
-      color: #000;
-      text-decoration: underline;
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="UV STORE Logo" />
-    <h1>UV STORE</h1>
-    <p><em>Real people's life stitched onto our designs - a identity for you to embrace</em></p>
-  </header>
 
-  <nav>
-    <a href="#designs">Designs</a>
-    <a href="#story">Story</a>
-    <a href="#subscribe">Subscribe</a>
-  </nav>
+  <h1>UV STORE</h1>
+  <div class="tagline">Average Is Your Enemy</div>
 
-  <section id="designs">
-    <h2>Sneak Peek Onto Our Designs</h2>
-    <div class="gallery">
-      <a href="image2.jpg" target="_blank">
-        <img src="image2.jpg" alt="Product Image 2" />
-      </a>
-      <a href="image3.jpg" target="_blank">
-        <img src="image3.jpg" alt="Product Image 3" />
-      </a>
-      <a href="image4.jpg" target="_blank">
-        <img src="image4.jpg" alt="Product Image 4" />
-      </a>
-    </div>
-  </section>
+  <div class="home-message">
+    At UV, every design has a soul.<br>
+    We don’t just make clothes — we tell real stories of struggle, grit, and ambition.<br>
+    Inspired by people fighting silent battles, our pieces are built from truth, not trends.<br>
+    20% of every profit goes back to those very lives that moved us.<br>
+    Because fashion should give back, not just stand out.
+  </div>
 
-  <section id="story">
-    <h2>Our Story</h2>
-    <p>
-      UV just doesn't sell premium clothes to you but lets you pick your own identity through our designs.
-      We redefine the way humanity thrives by helping the people in need — just by you getting your hands on our piece.
-    </p>
-  </section>
+  <div class="designs">
+    <img src="image1.jpg" alt="Design 1">
+    <img src="image2.jpg" alt="Design 2">
+    <img src="image3.jpg" alt="Design 3">
+    <img src="image4.jpg" alt="Design 4">
+    <img src="image5.jpg" alt="Design 5">
+  </div>
 
-  <section id="subscribe">
-    <h2>Subscribe to Our Newsletter</h2>
-    <form action="https://formspree.io/f/xgegykpn" method="POST">
-      <input type="email" name="email" placeholder="Your email address" required />
-      <input type="submit" value="Subscribe" />
+  <div class="subscribe">
+    <form action="https://formspree.io/f/mgvznnpg" method="POST">
+      <label for="email">Subscribe to get early access and updates</label><br><br>
+      <input type="email" name="email" id="email" placeholder="Enter your email" required>
+      <input type="hidden" name="_redirect" value="thankyou.html">
+      <button type="submit">Subscribe</button>
     </form>
-    <a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" class="social" target="_blank">Follow us on Instagram</a>
-  </section>
+  </div>
 
   <footer>
-    <p>&copy; 2025 UV STORE. All rights reserved.</p>
+    &copy; 2025 UV Store. All rights reserved.
   </footer>
+
 </body>
 </html>
