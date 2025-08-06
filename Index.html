@@ -12,8 +12,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #111;
+      background: linear-gradient(to bottom, #1f1f1f, #3a3a3a); /* Dark grey gradient background */
+      color: #fff;
     }
 
     header {
@@ -47,6 +47,19 @@
       text-decoration: underline;
     }
 
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .home-message {
       text-align: center;
       max-width: 850px;
@@ -54,6 +67,7 @@
       font-size: 17px;
       line-height: 1.8;
       background-color: #fff;
+      color: #111;
       padding: 25px 30px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -67,7 +81,7 @@
     section h2 {
       font-size: 28px;
       margin-bottom: 20px;
-      color: #222;
+      color: #fff;
       position: relative;
       display: inline-block;
     }
@@ -90,6 +104,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       font-size: 16px;
       line-height: 1.8;
+      color: #111;
     }
 
     .designs {
@@ -148,6 +163,7 @@
       margin-top: 60px;
       font-size: 14px;
       border-top: 1px solid #ddd;
+      color: #111;
     }
 
     footer a {
@@ -189,7 +205,7 @@
 </head>
 <body>
 
-  <header>
+  <header class="fade-in">
     <img src="logo.png" alt="UV Store Logo" />
     <nav>
       <a href="#story">Story</a>
@@ -198,7 +214,7 @@
     </nav>
   </header>
 
-  <div class="home-message">
+  <div class="home-message fade-in">
     <p>
       Every design you see here was born from the real stories of real people.
       From struggles to strength, from heartbreak to hustle, I translate their
@@ -208,7 +224,7 @@
     </p>
   </div>
 
-  <section id="story">
+  <section id="story" class="fade-in">
     <h2>ABOUT UV STORE</h2>
     <p class="about">
       UV Store is more than just a clothing brand — it's a movement. We believe that
@@ -217,7 +233,7 @@
     </p>
   </section>
 
-  <section id="design">
+  <section id="design" class="fade-in">
     <h2>OUR DESIGNS</h2>
     <div class="designs">
       <img src="image2.jpg" alt="Design 2" />
@@ -228,7 +244,7 @@
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="fade-in">
     <h2>CONTACT US</h2>
     <p>
       Subscribe to our newsletter and be the first to hear real stories and exclusive drops.
@@ -239,7 +255,7 @@
     </form>
   </section>
 
-  <footer>
+  <footer class="fade-in">
     <p>
       Follow us on
       <a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">Instagram</a>
