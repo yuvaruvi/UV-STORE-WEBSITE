@@ -3,32 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UV STORE</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* === Global Styles === */
-    :root {
-      --primary: #e91e63;
-      --dark: #111;
-      --light: #f9f9f9;
-      --grey: #2a2a2a;
-      --mid-grey: #3a3a3a;
-      --text: #e0e0e0;
-      --card-bg: #1e1e1e;
-      --shadow: rgba(0, 0, 0, 0.2);
-    }
+  <meta name="description" content="UV STORE – Designs with meaning. 20% of profits go to charity. Wear purpose." />
+  <title>UV STORE – Wear Purpose</title>
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -36,85 +22,121 @@
     }
 
     body {
-      margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #1a1a1a);
-      background-size: 400% 400%;
-      color: var(--text);
-      animation: shimmer 8s ease infinite;
-      min-height: 100vh;
+      background-color: #121212;
+      color: #f0f0f0;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    @keyframes shimmer {
+    /* Parallax Background */
+    .parallax-container {
+      background: linear-gradient(135deg, #1a1a1a, #0d0d0d, #181828, #0d0d0d, #1a1a1a);
+      background-size: 300% 300%;
+      animation: gradientShift 25s ease infinite alternate;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.95;
+    }
+
+    @keyframes gradientShift {
       0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37, #f0e68c);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.05s ease;
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Custom Cursor (Desktop Only) */
+    body {
+      cursor: none;
     }
 
-    /* === Header === */
+    .custom-cursor {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #d4af37;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: transform 0.1s ease;
+      mix-blend-mode: exclusion;
+      opacity: 0.9;
+    }
+
+    /* Sticky Header */
     header {
-      background-color: rgba(20, 20, 20, 0.95);
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       position: sticky;
       top: 0;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(10px);
       z-index: 1000;
+      padding: 25px 20px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      text-align: center;
     }
 
-    header img {
-      height: 110px;
+    .logo {
+      width: 120px;
+      height: 120px;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
+      object-fit: cover;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    header img:hover {
-      transform: scale(1.03);
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.65);
     }
 
+    /* Navigation */
     nav {
-      margin-top: 18px;
+      margin-top: 20px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 50px;
+      flex-wrap: wrap;
     }
 
     nav a {
-      margin: 0 18px;
+      color: #e0e0e0;
       text-decoration: none;
-      color: #ddd;
-      font-weight: 600;
-      font-size: 16px;
-      transition: color 0.3s ease, transform 0.2s ease;
+      font-weight: 500;
+      font-size: 1.15rem;
       position: relative;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-      transform: translateY(-2px);
+      padding: 10px 0;
+      transition: color 0.3s ease;
     }
 
     nav a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 50%;
       width: 0;
       height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease, left 0.3s ease;
+      background: linear-gradient(90deg, #d4af37, #f0e68c);
+      transition: width 0.4s ease, left 0.4s ease;
     }
 
     nav a:hover::after {
@@ -122,317 +144,478 @@
       left: 15%;
     }
 
-    /* === Home Message === */
-    .home-message {
-      text-align: center;
-      max-width: 850px;
-      margin: 50px auto;
-      font-size: 17px;
-      line-height: 1.8;
-      background-color: rgba(30, 30, 30, 0.8);
-      padding: 35px 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px var(--shadow);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-weight: 500;
-      color: #eee;
-    }
-
-    .home-message p {
-      margin: 0;
-    }
-
-    /* === Sections === */
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 34px;
-      margin-bottom: 20px;
+    nav a:hover {
       color: #fff;
-      position: relative;
-      display: inline-block;
-      font-weight: 700;
     }
 
-    section h2::after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 4px;
-      background: var(--primary);
-      margin: 12px auto 0;
-      border-radius: 2px;
-    }
-
-    .about {
-      background-color: var(--card-bg);
-      margin: 30px auto;
-      max-width: 750px;
-      padding: 35px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      font-size: 17px;
-      line-height: 1.9;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #ddd;
-    }
-
-    /* === Designs Grid === */
-    .designs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 28px;
-      margin-top: 40px;
-    }
-
-    .designs img {
-      width: 290px;
-      border-radius: 14px;
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      object-fit: cover;
-      height: 360px;
-    }
-
-    .designs img:hover {
-      transform: translateY(-10px) scale(1.04);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      z-index: 10;
-    }
-
-    /* === Contact Form === */
-    form {
-      max-width: 500px;
-      margin: 40px auto 0;
-      background: rgba(30, 30, 30, 0.6);
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    input[type="email"] {
-      padding: 14px 16px;
-      width: 70%;
-      margin-right: 10px;
-      border-radius: 10px;
-      border: 1px solid #444;
-      font-size: 16px;
-      background-color: #222;
-      color: #fff;
-      transition: all 0.3s ease;
-    }
-
-    input[type="email"]:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
-    }
-
-    input[type="submit"] {
-      padding: 14px 24px;
-      border-radius: 10px;
-      background-color: var(--primary);
-      color: white;
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
       border: none;
-      font-weight: 600;
-      font-size: 16px;
+      color: #fff;
+      font-size: 1.5rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
     }
 
-    input[type="submit"]:hover {
-      background-color: #d01854;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    /* Fade-in Animation */
+    .fade-element {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    /* === Footer === */
-    footer {
-      background-color: rgba(20, 20, 20, 0.95);
-      padding: 40px 20px;
+    .fade-element.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section Spacing */
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    /* Hero Message */
+    #home {
       text-align: center;
-      margin-top: 80px;
-      font-size: 15px;
-      border-top: 1px solid rgba(80, 80, 80, 0.3);
-      color: #aaa;
+      padding: 100px 20px 60px;
     }
 
-    .social-links {
-      margin: 15px 0;
+    #home h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      letter-spacing: 0.5px;
+    }
+
+    /* Designs Section */
+    #designs {
+      padding: 80px 20px;
+      max-width: 1500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    #designs h2 {
+      text-align: center;
+      font-size: 2.1rem;
+      margin-bottom: 50px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 26px;
+    }
+
+    .design-item {
+      flex: 1 1 280px;
+      min-width: 260px;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.12);
+      transition: all 0.6s cubic-bezier(0.25, 0.7, 0.35, 1.3);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      perspective: 1000px;
+      cursor: zoom-in;
+    }
+
+    .design-item:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .design-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .design-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /* The Purpose (About UV) */
+    #purpose {
+      max-width: 800px;
+      margin: 90px auto;
+      padding: 60px 40px;
+      background: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    #purpose h2 {
+      font-size: 2.1rem;
+      color: #fff;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    #purpose p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+      color: #e0e0e0;
+    }
+
+    .highlight {
+      color: #d4af37;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    /* Join Us (Subscription) */
+    #join {
+      text-align: center;
+      padding: 100px 20px;
+      margin: 70px auto;
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #join h2 {
+      font-size: 2rem;
+      margin-bottom: 50px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .subscribe-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .subscribe-form input {
+      width: 100%;
+      max-width: 420px;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 60px;
+      background-color: rgba(255, 255, 255, 0.09);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      outline: none;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.12);
+    }
+
+    .subscribe-form input::placeholder {
+      color: #bbb;
+    }
+
+    .subscribe-form input:focus {
+      background-color: rgba(255, 255, 255, 0.13);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.4);
+    }
+
+    .subscribe-form button {
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #d4af37, #f0e68c);
+      color: #000;
+      border: none;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.3);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
+    }
+
+    .subscribe-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Connect (Contact) */
+    #connect {
+      text-align: center;
+      padding: 100px 20px;
+      margin: 70px auto;
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #connect h2 {
+      font-size: 2rem;
+      margin-bottom: 60px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .contact-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      align-items: center;
+      gap: 50px;
       flex-wrap: wrap;
     }
 
-    .social-links a {
+    .contact-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: #ddd;
+      gap: 14px;
+      color: #e0e0e0;
       text-decoration: none;
       font-weight: 500;
+      font-size: 1.15rem;
       transition: color 0.3s ease;
     }
 
-    .social-links a:hover {
-      color: var(--primary);
+    .contact-item i {
+      font-size: 26px;
+      transition: all 0.4s ease;
     }
 
-    .social-links img {
-      width: 22px;
-      height: 22px;
-      filter: invert(0.7);
-      transition: filter 0.3s ease, transform 0.3s ease;
+    .contact-item:hover {
+      color: #fff;
     }
 
-    .social-links a:hover img {
-      filter: invert(0) brightness(1.2);
-      transform: scale(1.1);
+    .contact-item:hover i {
+      transform: scale(1.3) translateY(-2px);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
     }
 
-    footer p {
-      margin: 10px 0;
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+      color: #888;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      background-color: rgba(10, 10, 10, 0.3);
     }
 
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .custom-cursor { display: none; }
+      body { cursor: default; }
+
+      .logo { width: 100px; height: 100px; }
+      header { padding: 15px 15px 10px; }
+
+      nav ul { display: none; }
+      nav ul.active { display: flex; flex-direction: column; gap: 15px; }
+      .menu-toggle { display: block; }
+
+      #home h1 { font-size: 2rem; }
+      #designs, #join, #connect, #purpose {
+        padding: 60px 20px;
+      }
+
+      .design-item { min-width: 100%; }
+      .design-item img { height: 280px; }
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    @media (min-width: 481px) and (max-width: 1024px) {
+      .design-item { flex: 1 1 calc(50% - 13px); }
     }
 
-    /* === Responsive Design === */
-    @media (max-width: 650px) {
-      nav a {
-        display: inline-block;
-        margin: 8px 12px;
-        font-size: 15px;
-      }
+    @media (min-width: 1025px) {
+      .design-item { flex: 1 1 calc(33.333% - 17px); }
+    }
 
-      .designs img {
-        width: 90%;
-        height: 320px;
-      }
-
-      .home-message,
-      .about {
-        font-size: 16px;
-        padding: 25px;
-        margin: 30px 15px;
-      }
-
-      input[type="email"] {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      input[type="submit"] {
-        width: 100%;
-      }
-
-      form {
-        padding: 20px;
-      }
-
-      .social-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
+    /* SVG Icons */
+    .icon-instagram, .icon-email {
+      width: 26px;
+      height: 26px;
+      transition: all 0.4s ease;
     }
   </style>
 </head>
 <body>
 
+  <!-- Parallax Background -->
+  <div class="parallax-container"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+
+  <!-- Header -->
   <header>
-    <img src="logo.png" alt="UV Store Logo" />
+    <img src="logo.png" alt="UV STORE Logo" class="logo" />
     <nav>
-      <a href="#story">Story</a>
-      <a href="#design">Design</a>
-      <a href="#contact">Contact</a>
+      <button class="menu-toggle">☰</button>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#designs">Designs</a></li>
+        <li><a href="#purpose">The Purpose</a></li>
+        <li><a href="#join">Join Us</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
     </nav>
   </header>
 
-  <div class="home-message fade-in">
-    <p>
-      Every design you see here was born from the real stories of real people.
-      From struggles to strength, from heartbreak to hustle, I translate their
-      experiences into powerful clothing. This brand isn’t just mine — it's theirs
-      too. And we give back, always: 20% of our profits go directly to people in need.
-      Wear a story. Share a purpose.
-    </p>
-  </div>
-
-  <section id="story" class="fade-in">
-    <h2>ABOUT UV STORE</h2>
-    <p class="about">
-      UV Store is more than just a clothing brand — it's a movement. We believe that
-      behind every great design lies a greater story. By channeling life’s rawest emotions
-      into art, we create clothing that speaks to the soul and inspires the streets.
-      Our mission is to empower voices through wearable art and support those in need.
-    </p>
+  <!-- Hero -->
+  <section id="home">
+    <h1>Designs That Speak. Purpose That Moves.</h1>
   </section>
 
-  <section id="design" class="fade-in">
-    <h2>OUR DESIGNS</h2>
-    <div class="designs">
-      <img src="image2.jpg" alt="Design 2" loading="lazy" />
-      <img src="image3.jpg" alt="Design 3" loading="lazy" />
-      <img src="image4.jpg" alt="Design 4" loading="lazy" />
-      <img src="image5.jpg" alt="Design 5" loading="lazy" />
-      <img src="image6.jpg" alt="Design 6" loading="lazy" />
+  <!-- Designs -->
+  <section id="designs">
+    <h2>Designs</h2>
+    <div class="image-grid">
+      <div class="design-item fade-element">
+        <img src="image2.jpg" alt="UV Design 2" />
+      </div>
+      <div class="design-item fade-element">
+        <img src="image3.jpg" alt="UV Design 3" />
+      </div>
+      <div class="design-item fade-element">
+        <img src="image4.jpg" alt="UV Design 4" />
+      </div>
+      <div class="design-item fade-element">
+        <img src="image5.jpg" alt="UV Design 5" />
+      </div>
+      <div class="design-item fade-element">
+        <img src="image6.jpg" alt="UV Design 6" />
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="fade-in">
-    <h2>CONTACT US</h2>
-    <p>
-      Subscribe to our newsletter and be the first to hear real stories and exclusive drops.
-    </p>
-    <form action="https://formspree.io/f/mgvznnpg" method="POST">
-      <input type="email" name="email" placeholder="Your email address" required />
-      <input type="submit" value="Subscribe" />
-    </form>
+  <!-- The Purpose -->
+  <section id="purpose" class="fade-element">
+    <h2>The Purpose</h2>
+    <p>At <span class="highlight">UV</span>, every design tells a story — inspired by hustle, driven by purpose.</p>
+    <p>Our prints are crafted with meaning, made to motivate those who refuse to settle.</p>
+    <p>We don’t just create apparel — we create a <span class="highlight">mindset</span>.</p>
+    <p>And because impact matters, <span class="highlight">20% of our profits go to charity</span>, fueling real change beyond fashion.</p>
+    <p><strong>Wear UV. Wear purpose.</strong></p>
   </section>
 
+  <!-- Join Us -->
+  <section id="join" class="fade-element">
+    <h2>Join Us</h2>
+    <div class="subscribe-form">
+      <input type="email" placeholder="Your email address" aria-label="Email address" />
+      <button type="submit">Subscribe</button>
+    </div>
+  </section>
+
+  <!-- Connect -->
+  <section id="connect" class="fade-element">
+    <h2>Connect</h2>
+    <div class="contact-links">
+      <a href="https://instagram.com" class="contact-item" target="_blank">
+        <svg class="icon-instagram" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.205.013-3.583.07-4.85.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.163c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441-.645-1.441-1.44s.645-1.44 1.441-1.44c.795 0 1.439.645 1.439 1.44s-.644 1.44-1.439 1.44z"/>
+        </svg>
+        Instagram
+      </a>
+      <a href="mailto:contact@uvstore.com" class="contact-item">
+        <svg class="icon-email" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        Email
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <div class="social-links">
-      <a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">
-        <img src="insta.png" alt="Instagram" /> Follow us on Instagram
-      </a>
-      <a href="mailto:yuvarajbharathy25@gmail.com">
-        <img src="email.png" alt="Email" /> Send us an Email
-      </a>
-    </div>
-    <p>&copy; 2025 UV STORE. All rights reserved.</p>
+    <p>© 2025 UV STORE. All Rights Reserved.</p>
   </footer>
 
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9998; justify-content:center; align-items:center; flex-direction:column;">
+    <img id="lightbox-img" style="max-width:90vw; max-height:85vh; border-radius:12px; box-shadow:0 0 30px rgba(212,175,55,0.4);" />
+    <div id="lightbox-close" style="color:#aaa; margin-top:20px; font-size:1.5rem; cursor:pointer;">Tap to Close</div>
+  </div>
+
+  <!-- Scripts -->
   <script>
-    // Fade-in on scroll
-    const fadeElements = document.querySelectorAll('.fade-in');
-
-    const fadeInObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeInObserver.unobserve(entry.target);
-        }
+    // Custom Cursor
+    const cursor = document.querySelector('.custom-cursor');
+    if (cursor) {
+      document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
       });
-    }, { threshold: 0.1 });
+    }
 
-    fadeElements.forEach(el => {
-      fadeInObserver.observe(el);
+    // Scroll Progress
+    const progress = document.querySelector('.scroll-progress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      progress.style.width = scrollPercent + '%';
+    });
+
+    // Fade-in on Scroll
+    const fadeElements = document.querySelectorAll('.fade-element');
+    const isInViewport = el => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.1;
+    };
+
+    const checkVisibility = () => {
+      fadeElements.forEach(el => {
+        if (isInViewport(el)) el.classList.add('visible');
+      });
+    };
+
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('resize', checkVisibility);
+    setTimeout(checkVisibility, 200);
+
+    // Mobile Menu
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('active');
+    });
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const closeLb = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.design-item').forEach(item => {
+      item.addEventListener('click', function() {
+        lbImg.src = this.querySelector('img').src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    closeLb.addEventListener('click', () => {
+      lb.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    lb.addEventListener('click', e => {
+      if (e.target === lb) {
+        lb.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
     });
   </script>
 
