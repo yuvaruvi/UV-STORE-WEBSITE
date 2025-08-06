@@ -1,177 +1,440 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UV Store</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UV STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
+    /* === Global Styles === */
+    :root {
+      --primary: #e91e63;
+      --dark: #111;
+      --light: #f9f9f9;
+      --grey: #2a2a2a;
+      --mid-grey: #3a3a3a;
+      --text: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --shadow: rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }body {
-  background: linear-gradient(to bottom, #1c1c1c, #4f4f4f);
-  color: white;
-  scroll-behavior: smooth;
-}
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #1a1a1a);
+      background-size: 400% 400%;
+      color: var(--text);
+      animation: shimmer 8s ease infinite;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-header {
-  padding: 20px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
-}
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-header h1 {
-  font-size: 2.5em;
-}
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
 
-nav {
-  text-align: center;
-  margin: 20px 0;
-}
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 1.2em;
-}
+    /* === Header === */
+    header {
+      background-color: rgba(20, 20, 20, 0.95);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.image-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 20px;
-}
+    header img {
+      height: 110px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
 
-.image-section img {
-  width: 300px;
-  height: auto;
-  border-radius: 8px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
+    header img:hover {
+      transform: scale(1.03);
+    }
 
-.fade-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
+    nav {
+      margin-top: 18px;
+    }
 
-.about-box {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  margin: 40px auto;
-  width: 80%;
-  max-width: 800px;
-  border-radius: 10px;
-  text-align: center;
-}
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #ddd;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.2s ease;
+      position: relative;
+    }
 
-.newsletter {
-  text-align: center;
-  margin: 60px 0;
-}
+    nav a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
 
-.newsletter input[type="email"] {
-  padding: 10px;
-  width: 250px;
-  border: none;
-  border-radius: 5px;
-  margin-right: 10px;
-}
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
 
-.newsletter button {
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+    nav a:hover::after {
+      width: 70%;
+      left: 15%;
+    }
 
-footer {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 30px;
-  text-align: center;
-}
+    /* === Home Message === */
+    .home-message {
+      text-align: center;
+      max-width: 850px;
+      margin: 50px auto;
+      font-size: 17px;
+      line-height: 1.8;
+      background-color: rgba(30, 30, 30, 0.8);
+      padding: 35px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px var(--shadow);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 500;
+      color: #eee;
+    }
 
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 10px;
-}
+    .home-message p {
+      margin: 0;
+    }
 
-.footer-icons img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
+    /* === Sections === */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
 
-@media (max-width: 600px) {
-  .image-section img {
-    width: 90%;
-  }
+    section h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+      color: #fff;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+    }
 
-  .newsletter input[type="email"] {
-    width: 70%;
-    margin-bottom: 10px;
-  }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: var(--primary);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
 
-  .newsletter button {
-    width: 50%;
-  }
-}
+    .about {
+      background-color: var(--card-bg);
+      margin: 30px auto;
+      max-width: 750px;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      font-size: 17px;
+      line-height: 1.9;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ddd;
+    }
 
+    /* === Designs Grid === */
+    .designs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .designs img {
+      width: 290px;
+      border-radius: 14px;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      object-fit: cover;
+      height: 360px;
+    }
+
+    .designs img:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+
+    /* === Contact Form === */
+    form {
+      max-width: 500px;
+      margin: 40px auto 0;
+      background: rgba(30, 30, 30, 0.6);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    input[type="email"] {
+      padding: 14px 16px;
+      width: 70%;
+      margin-right: 10px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      font-size: 16px;
+      background-color: #222;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    input[type="email"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+    }
+
+    input[type="submit"] {
+      padding: 14px 24px;
+      border-radius: 10px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    }
+
+    input[type="submit"]:hover {
+      background-color: #d01854;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    }
+
+    /* === Footer === */
+    footer {
+      background-color: rgba(20, 20, 20, 0.95);
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 80px;
+      font-size: 15px;
+      border-top: 1px solid rgba(80, 80, 80, 0.3);
+      color: #aaa;
+    }
+
+    .social-links {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .social-links img {
+      width: 22px;
+      height: 22px;
+      filter: invert(0.7);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-links a:hover img {
+      filter: invert(0) brightness(1.2);
+      transform: scale(1.1);
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* === Responsive Design === */
+    @media (max-width: 650px) {
+      nav a {
+        display: inline-block;
+        margin: 8px 12px;
+        font-size: 15px;
+      }
+
+      .designs img {
+        width: 90%;
+        height: 320px;
+      }
+
+      .home-message,
+      .about {
+        font-size: 16px;
+        padding: 25px;
+        margin: 30px 15px;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>UV STORE</h1>
-  </header>  <nav>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>  <section id="gallery" class="image-section">
-    <img src="image1.jpg" alt="Design 1">
-    <img src="image2.jpg" alt="Design 2">
-    <img src="image3.jpg" alt="Design 3">
-    <img src="image4.jpg" alt="Design 4">
-    <img src="image5.jpg" alt="Design 5">
-    <img src="image6.jpg" alt="Design 6">
-  </section>  <section class="about-box">
-    <p>Every design we create shares a purpose – a story of ambition, passion, and identity. At UV Store, we don’t just print – we inspire.</p>
-  </section>  <section id="contact" class="newsletter">
-    <h2>Contact Us</h2>
-    <input type="email" placeholder="Enter your email">
-    <button>Subscribe</button>
-  </section>  <footer>
-    <p>Follow us on</p>
-    <div class="footer-icons">
-      <a href="https://instagram.com/yourprofile" target="_blank">
-        <img src="insta.png" alt="Instagram">
+    <img src="logo.png" alt="UV Store Logo" />
+    <nav>
+      <a href="#story">Story</a>
+      <a href="#design">Design</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="home-message fade-in">
+    <p>
+      Every design you see here was born from the real stories of real people.
+      From struggles to strength, from heartbreak to hustle, I translate their
+      experiences into powerful clothing. This brand isn’t just mine — it's theirs
+      too. And we give back, always: 20% of our profits go directly to people in need.
+      Wear a story. Share a purpose.
+    </p>
+  </div>
+
+  <section id="story" class="fade-in">
+    <h2>ABOUT UV STORE</h2>
+    <p class="about">
+      UV Store is more than just a clothing brand — it's a movement. We believe that
+      behind every great design lies a greater story. By channeling life’s rawest emotions
+      into art, we create clothing that speaks to the soul and inspires the streets.
+      Our mission is to empower voices through wearable art and support those in need.
+    </p>
+  </section>
+
+  <section id="design" class="fade-in">
+    <h2>OUR DESIGNS</h2>
+    <div class="designs">
+      <img src="image2.jpg" alt="Design 2" loading="lazy" />
+      <img src="image3.jpg" alt="Design 3" loading="lazy" />
+      <img src="image4.jpg" alt="Design 4" loading="lazy" />
+      <img src="image5.jpg" alt="Design 5" loading="lazy" />
+      <img src="image6.jpg" alt="Design 6" loading="lazy" />
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2>CONTACT US</h2>
+    <p>
+      Subscribe to our newsletter and be the first to hear real stories and exclusive drops.
+    </p>
+    <form action="https://formspree.io/f/mgvznnpg" method="POST">
+      <input type="email" name="email" placeholder="Your email address" required />
+      <input type="submit" value="Subscribe" />
+    </form>
+  </section>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">
+        <img src="insta.png" alt="Instagram" /> Follow us on Instagram
       </a>
-      <a href="mailto:your@email.com">
-        <img src="email.png" alt="Email">
+      <a href="mailto:yuvarajbharathy25@gmail.com">
+        <img src="email.png" alt="Email" /> Send us an Email
       </a>
     </div>
-  </footer>  <script>
-    const observer = new IntersectionObserver(entries => {
+    <p>&copy; 2025 UV STORE. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const fadeInObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
+          entry.target.classList.add('visible');
+          fadeInObserver.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.image-section img, .about-box, .newsletter').forEach(el => {
-      observer.observe(el);
+    fadeElements.forEach(el => {
+      fadeInObserver.observe(el);
     });
-  </script></body>
+  </script>
+
+</body>
 </html>
