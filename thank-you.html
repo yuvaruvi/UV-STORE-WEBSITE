@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -24,9 +25,9 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px 40px;
       overflow: hidden;
-      animation: fadeIn 1.2s ease;
+      animation: fadeIn 1.4s ease;
     }
 
     @keyframes fadeIn {
@@ -36,7 +37,7 @@
 
     .thank-you-container {
       max-width: 600px;
-      padding: 60px 40px;
+      padding: 70px 40px 50px;
       background: rgba(30, 30, 30, 0.6);
       backdrop-filter: blur(10px);
       border-radius: 24px;
@@ -44,28 +45,41 @@
         0 15px 40px rgba(0, 0, 0, 0.5),
         0 0 30px rgba(212, 175, 55, 0.15);
       border: 1px solid rgba(212, 175, 55, 0.18);
-      position: relative;
-      z-index: 2;
+    }
+
+    .logo-thankyou {
+      width: 100px;
+      height: 100px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      margin: 0 auto 25px;
+      display: block;
+      transition: transform 0.3s ease;
     }
 
     .thank-you-container h1 {
       font-size: 2.4rem;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     .thank-you-container p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: #e0e0e0;
       margin-bottom: 30px;
       line-height: 1.7;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .icon-check {
       font-size: 60px;
       color: #d4af37;
-      margin-bottom: 20px;
+      margin: 20px 0;
       text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
     }
 
@@ -80,6 +94,8 @@
       cursor: pointer;
       transition: all 0.4s ease;
       box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn-home:hover {
@@ -87,7 +103,7 @@
       box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
     }
 
-    /* Background Animation */
+    /* Subtle Animated Glow Background */
     body::before {
       content: '';
       position: fixed;
@@ -105,14 +121,42 @@
       0% { opacity: 0.3; }
       100% { opacity: 0.6; }
     }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .thank-you-container {
+        padding: 60px 25px 40px;
+      }
+
+      .thank-you-container h1 {
+        font-size: 2rem;
+      }
+
+      .thank-you-container p {
+        font-size: 1.05rem;
+      }
+
+      .logo-thankyou {
+        width: 90px;
+        height: 90px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="thank-you-container">
+    <!-- Logo -->
+    <img src="logo.png" alt="UV STORE Logo" class="logo-thankyou" />
+
+    <!-- Checkmark -->
     <div class="icon-check">✓</div>
-    <h1>Thank You!</h1>
+
+    <!-- Main Message -->
+    <h1>Thank You</h1>
     <p>Your subscription means a lot. You're now part of a movement that values purpose, design, and impact.</p>
     <p>We’ll keep you updated with exclusive drops and stories from the UV journey.</p>
+
+    <!-- Back to Home -->
     <a href="index.html" class="btn-home">Back to Home</a>
   </div>
 </body>
