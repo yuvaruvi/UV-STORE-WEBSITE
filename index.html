@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UV STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }body {
+  background: linear-gradient(to bottom, #1e1e1e, #d3d3d3);
+  color: white;
+  scroll-behavior: smooth;
+  transition: background 1s ease;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+section.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  font-weight: bold;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  width: 90%;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.design-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: fadeIn 1.5s ease;
+}
+
+.design-block img {
+  max-width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.design-block img:hover {
+  transform: scale(1.03);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+footer {
+  background-color: #111;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .socials {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .socials a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .design-block {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .design-block:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .glass {
+    text-align: left;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>UV STORE</header>  <section class="hero">
+    YOUR HUSTLE. YOUR STYLE.
+  </section>  <div class="container">
+    <div class="design-block">
+      <img src="image1.jpg" alt="Design 1">
+      <div class="glass">
+        <h2>WEAR YOUR DRIVE</h2>
+        <p>Every stitch in this tee reminds you that greatness begins with mindset. Hustle is more than a word—it's a lifestyle.</p>
+      </div>
+    </div><div class="design-block">
+  <img src="image2.jpg" alt="Design 2">
+  <div class="glass">
+    <h2>NEVER SETTLE</h2>
+    <p>This hoodie isn't just apparel. It's your daily commitment to push limits, break barriers, and choose greatness.</p>
+  </div>
+</div>
+
+<div class="design-block">
+  <img src="image3.jpg" alt="Design 3">
+  <div class="glass">
+    <h2>STAY RELENTLESS</h2>
+    <p>Design that echoes your vision—keep moving forward, because average is never an option.</p>
+  </div>
+</div>
+
+  </div>  <footer>
+    <div class="socials">
+      <a href="https://instagram.com/uvadlip" target="_blank">Instagram</a>
+      <a href="mailto:yuvaruvi.official@gmail.com">yuvaruvi.official@gmail.com</a>
+    </div>
+    <p>&copy; 2025 UV STORE. All rights reserved.</p>
+  </footer>
+</body>
+</html>
