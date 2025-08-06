@@ -6,8 +6,8 @@
   <meta name="description" content="UV STORE – Designs with meaning. 20% of profits go to charity. Wear purpose." />
   <title>UV STORE – Wear Purpose</title>
 
-  <!-- Google Fonts: Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Montserrat (Light, Regular, Medium, Bold) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* Reset */
@@ -31,15 +31,15 @@
 
     /* Parallax Background */
     .parallax-container {
-      background: linear-gradient(135deg, #1a1a1a, #0d0d0d, #181828, #0d0d0d, #1a1a1a);
-      background-size: 300% 300%;
-      animation: gradientShift 25s ease infinite alternate;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -2;
+      background: linear-gradient(135deg, #1a1a1a, #0d0d0d, #181828, #0d0d0d, #1a1a1a);
+      background-size: 300% 300%;
+      animation: gradientShift 25s ease infinite alternate;
+      z-index: -3;
       opacity: 0.95;
     }
 
@@ -162,7 +162,7 @@
     .fade-element {
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+      transition: opacity 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .fade-element.visible {
@@ -182,8 +182,9 @@
     }
 
     #home h1 {
-      font-size: 2.4rem;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
+      font-size: 2.4rem;
       color: #fff;
       max-width: 800px;
       margin: 0 auto;
@@ -209,14 +210,16 @@
 
     .image-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 26px;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
     }
 
     .design-item {
       flex: 1 1 280px;
-      min-width: 260px;
+      min-width: 280px;
+      max-width: 500px;
+      width: 100%;
       overflow: hidden;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.12);
@@ -233,7 +236,7 @@
 
     .design-item img {
       width: 100%;
-      height: 320px;
+      height: 360px;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
@@ -242,7 +245,28 @@
       transform: scale(1.08);
     }
 
-    /* The Purpose (About UV) */
+    /* Divider Line */
+    .divider-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      margin: 15px auto;
+    }
+
+    /* Hero Text Between Images */
+    .image-caption {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 1.3rem;
+      color: #aaa;
+      text-align: center;
+      max-width: 600px;
+      margin: 10px auto;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+
+    /* The Purpose */
     #purpose {
       max-width: 800px;
       margin: 90px auto;
@@ -281,7 +305,7 @@
       color: #fff;
     }
 
-    /* Join Us (Subscription) */
+    /* Join the Inner Circle */
     #join {
       text-align: center;
       padding: 100px 20px;
@@ -293,9 +317,18 @@
 
     #join h2 {
       font-size: 2rem;
-      margin-bottom: 50px;
+      margin-bottom: 15px;
       font-weight: 600;
       color: #fff;
+    }
+
+    #join p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 40px;
+      letter-spacing: 0.5px;
     }
 
     .subscribe-form {
@@ -351,7 +384,7 @@
       box-shadow: 0 16px 40px rgba(212, 175, 55, 0.5);
     }
 
-    /* Connect (Contact) */
+    /* Connect */
     #connect {
       text-align: center;
       padding: 100px 20px;
@@ -433,23 +466,55 @@
       .design-item img { height: 280px; }
     }
 
-    @media (min-width: 481px) and (max-width: 1024px) {
-      .design-item { flex: 1 1 calc(50% - 13px); }
-    }
-
-    @media (min-width: 1025px) {
-      .design-item { flex: 1 1 calc(33.333% - 17px); }
-    }
-
     /* SVG Icons */
     .icon-instagram, .icon-email {
       width: 26px;
       height: 26px;
       transition: all 0.4s ease;
     }
+
+    /* Monogram Intro */
+    .intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      animation: fadeOut 2.5s ease forwards;
+    }
+
+    .monogram {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: #d4af37;
+      letter-spacing: 8px;
+      opacity: 0;
+      animation: appear 1.8s 0.3s ease forwards;
+    }
+
+    @keyframes appear {
+      0% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Monogram Intro -->
+  <div class="intro">
+    <div class="monogram">UV</div>
+  </div>
 
   <!-- Parallax Background -->
   <div class="parallax-container"></div>
@@ -469,7 +534,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#designs">Designs</a></li>
         <li><a href="#purpose">The Purpose</a></li>
-        <li><a href="#join">Join Us</a></li>
+        <li><a href="#join">Inner Circle</a></li>
         <li><a href="#connect">Connect</a></li>
       </ul>
     </nav>
@@ -477,7 +542,7 @@
 
   <!-- Hero -->
   <section id="home">
-    <h1>Designs That Speak. Purpose That Moves.</h1>
+    <h1>Design is not worn. It is lived.</h1>
   </section>
 
   <!-- Designs -->
@@ -487,15 +552,27 @@
       <div class="design-item fade-element">
         <img src="image2.jpg" alt="UV Design 2" />
       </div>
+      <div class="divider-line"></div>
+      <p class="image-caption">The Grind. 2025 Collection.</p>
+
       <div class="design-item fade-element">
         <img src="image3.jpg" alt="UV Design 3" />
       </div>
+      <div class="divider-line"></div>
+      <p class="image-caption">Legacy in Motion.</p>
+
       <div class="design-item fade-element">
         <img src="image4.jpg" alt="UV Design 4" />
       </div>
+      <div class="divider-line"></div>
+      <p class="image-caption">No Rest. No Regrets.</p>
+
       <div class="design-item fade-element">
         <img src="image5.jpg" alt="UV Design 5" />
       </div>
+      <div class="divider-line"></div>
+      <p class="image-caption">Purpose Over Pattern.</p>
+
       <div class="design-item fade-element">
         <img src="image6.jpg" alt="UV Design 6" />
       </div>
@@ -512,13 +589,14 @@
     <p><strong>Wear UV. Wear purpose.</strong></p>
   </section>
 
-  <!-- Join Us -->
+  <!-- Join the Inner Circle -->
   <section id="join" class="fade-element">
-    <h2>Join Us</h2>
-    <div class="subscribe-form">
-      <input type="email" placeholder="Your email address" aria-label="Email address" />
-      <button type="submit">Subscribe</button>
-    </div>
+    <h2>Join the Inner Circle</h2>
+    <p>By invitation only. Limited access.</p>
+    <form action="https://formspree.io/f/mgvznnpg" method="POST" class="subscribe-form" target="_blank">
+      <input type="email" name="email" placeholder="Your email address" required aria-label="Email address" />
+      <button type="submit">Request Access</button>
+    </form>
   </section>
 
   <!-- Connect -->
