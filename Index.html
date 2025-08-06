@@ -1,86 +1,55 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UV STORE</title>
   <style>
-    html {
-      scroll-behavior: smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #1a1a1a, #3a3a3a, #5a5a5a, #d9d9d9);
+      background: linear-gradient(to bottom, #1a1a1a, #2e2e2e, #444, #666, #aaa);
       color: white;
-      transition: all 0.3s ease-in-out;
-    }
-
-    /* Glassmorphism Effect */
-    .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease-in-out;
+      transition: background 1.2s ease;
     }
 
     header {
-      background-color: white;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     header img {
-      height: 120px;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100px;
+      height: auto;
     }
 
     nav {
-      text-align: center;
       margin-top: 10px;
     }
 
     nav a {
-      margin: 0 15px;
+      color: white;
       text-decoration: none;
-      color: #333;
+      margin: 0 15px;
       font-weight: bold;
-      transition: color 0.3s ease-in-out;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-      color: #666;
-    }
-
-    .home-message, .about {
-      text-align: center;
-      max-width: 800px;
-      margin: 30px auto;
-      font-size: 16px;
-      line-height: 1.6;
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px;
     }
 
     section {
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    section h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    section p {
-      max-width: 700px;
-      margin: 0 auto 20px;
-      font-size: 16px;
-      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
     }
 
     .designs {
@@ -88,120 +57,133 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
+      margin-top: 20px;
     }
 
     .designs img {
-      width: 300px;
-      height: auto;
+      max-width: 300px;
       border-radius: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .designs img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     form {
-      max-width: 500px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     input[type="email"] {
       padding: 10px;
-      width: 70%;
-      margin-right: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      transition: all 0.3s ease-in-out;
+      border-radius: 8px;
+      border: none;
     }
 
     input[type="submit"] {
-      padding: 10px 20px;
-      border-radius: 5px;
-      background-color: #333;
-      color: white;
+      padding: 10px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
       border: none;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
     }
 
     input[type="submit"]:hover {
-      background-color: #555;
+      background-color: #ddd;
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
       background-color: white;
+      padding: 20px;
       margin-top: 40px;
       border-top: 1px solid #ddd;
     }
 
-    footer a {
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .footer-container a {
       color: #333;
       text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer-container a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
-      .home-message, .about {
-        font-size: 14px;
-        padding: 0 10px;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 10px 8px;
-        font-size: 14px;
-      }
-
       .designs img {
         width: 90%;
       }
+
+      .footer-container {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+      }
     }
   </style>
-</head><body>
+</head>
+<body>
+
   <header>
-    <img src="logo.png" alt="UV Store Logo">
+    <img src="image1.jpg" alt="UV Store Logo">
     <nav>
-      <a href="#story">Story</a>
-      <a href="#design">Design</a>
-      <a href="#contact">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#designs">Designs</a>
+      <a href="#subscribe">Subscribe</a>
     </nav>
-  </header>  
+  </header>
 
-  <div class="home-message glass">
-    <p>Every design you see here was born from the real stories of real people. From struggles to strength, from heartbreak to hustle, I translate their experiences into powerful clothing. This brand isn’t just mine — it's theirs too. And we give back, always: 20% of our profits go directly to people in need. Wear a story. Share a purpose.</p>
-  </div>  
+  <section id="home" class="glass home-message">
+    <h2>Welcome to UV STORE</h2>
+    <p>This brand is more than just fashion – it's a movement. Our prints inspire hustle, ambition, and the grind of middle-class youth who dream big. Whether you're in school, college, or working toward your goal, wear your mindset with UV STORE.</p>
+  </section>
 
-  <section id="story" class="glass">
-    <h2>ABOUT UV STORE</h2>
-    <p class="about">UV Store is more than just a clothing brand — it's a movement. We believe that behind every great design lies a greater story. By channeling life’s rawest emotions into art, we create clothing that speaks to the soul and inspires the streets.</p>
-  </section>  
+  <section id="about" class="glass about">
+    <h2>About Us</h2>
+    <p>We believe every hoodie and T-shirt you wear should speak your truth. Our mission is to empower young people through bold, minimalistic, and meaningful designs that reflect ambition, motivation, and identity.</p>
+  </section>
 
-  <section id="design">
-    <h2>OUR DESIGNS</h2>
+  <section id="designs" class="glass">
+    <h2>Our Designs</h2>
     <div class="designs">
-      <img src="image2.jpg" alt="Design 2">
-      <img src="image3.jpg" alt="Design 3">
-      <img src="image4.jpg" alt="Design 4">
-      <img src="image5.jpg" alt="Design 5">
-      <img src="image6.jpg" alt="Design 6">
+      <img src="image2.jpg" alt="Design 1">
+      <img src="image3.jpg" alt="Design 2">
     </div>
-  </section>  
+  </section>
 
-  <section id="contact" class="glass">
-    <h2>CONTACT US</h2>
-    <p>Subscribe to our newsletter and be the first to hear real stories and exclusive drops.</p>
-    <form action="https://formspree.io/f/mgvznnpg" method="POST">
-      <input type="email" name="email" placeholder="Your email address" required>
+  <section id="subscribe" class="glass">
+    <h2>Subscribe to Our Newsletter</h2>
+    <form action="https://formspree.io/f/xjvnwnpg" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required>
       <input type="submit" value="Subscribe">
     </form>
-  </section>  
+  </section>
 
   <footer>
-    <p>Follow us on <a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">Instagram</a></p>
-    <p>Contact: <a href="mailto:yuvarajbharathy25@gmail.com">yuvarajbharathy25@gmail.com</a></p>
-    <p>&copy; 2025 UV STORE. All rights reserved.</p>
+    <div class="footer-container">
+      <div><a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">Instagram</a></div>
+      <div><a href="mailto:yuvarajbharathy25@gmail.com">yuvarajbharathy25@gmail.com</a></div>
+      <div>&copy; 2025 UV STORE. All rights reserved.</div>
+    </div>
   </footer>
-</body></html>
+
+</body>
+</html>
