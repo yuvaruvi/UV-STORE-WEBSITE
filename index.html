@@ -1,166 +1,188 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UV STORE</title>
   <style>
     html {
       scroll-behavior: smooth;
-    }
+    }body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #1a1a1a, #3a3a3a, #5a5a5a, #d9d9d9);
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #1a1a1a, #3a3a3a, #5a5a5a, #d9d9d9);
-      color: white;
-      transition: all 0.3s ease-in-out;
-    }
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
 
-    /* Glassmorphism Effect */
-    .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease-in-out;
-    }
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    header {
-      background-color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
 
-    header img {
-      height: 120px;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+header {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    nav {
-      text-align: center;
-      margin-top: 10px;
-    }
+header img {
+  height: 120px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      transition: color 0.3s ease-in-out;
-    }
+nav {
+  text-align: center;
+  margin-top: 10px;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-      color: #666;
-    }
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
 
-    .home-message, .about {
-      text-align: center;
-      max-width: 800px;
-      margin: 30px auto;
-      font-size: 16px;
-      line-height: 1.6;
-    }
+nav a:hover {
+  text-decoration: underline;
+  color: #666;
+}
 
-    section {
-      text-align: center;
-      padding: 40px 20px;
-    }
+.home-message, .about {
+  text-align: center;
+  max-width: 800px;
+  margin: 30px auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
 
-    section h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
+section {
+  text-align: center;
+  padding: 40px 20px;
+}
 
-    section p {
-      max-width: 700px;
-      margin: 0 auto 20px;
-      font-size: 16px;
-      line-height: 1.6;
-    }
+section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-    .designs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+section p {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
 
-    .designs img {
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.designs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
 
-    .designs img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
+.design-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-    }
+.designs img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    input[type="email"] {
-      padding: 10px;
-      width: 70%;
-      margin-right: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      transition: all 0.3s ease-in-out;
-    }
+.designs img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-    input[type="submit"] {
-      padding: 10px 20px;
-      border-radius: 5px;
-      background-color: #333;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
 
-    input[type="submit"]:hover {
-      background-color: #555;
-    }
+input[type="email"] {
+  padding: 10px;
+  width: 70%;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: white;
-      margin-top: 40px;
-      border-top: 1px solid #ddd;
-    }
+input[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
 
-    footer a {
-      color: #333;
-      text-decoration: none;
-    }
+input[type="submit"]:hover {
+  background-color: #555;
+}
 
-    @media (max-width: 600px) {
-      .home-message, .about {
-        font-size: 14px;
-        padding: 0 10px;
-      }
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
 
-      nav a {
-        display: inline-block;
-        margin: 10px 8px;
-        font-size: 14px;
-      }
+footer p {
+  margin: 8px 0;
+}
 
-      .designs img {
-        width: 90%;
-      }
-    }
+footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .home-message, .about {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 10px 8px;
+    font-size: 14px;
+  }
+
+  .designs img {
+    width: 90%;
+  }
+}
+
   </style>
-</head><body>
+</head>
+<body>
   <header>
     <img src="logo.png" alt="UV Store Logo">
     <nav>
@@ -168,40 +190,66 @@
       <a href="#design">Design</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>  
-
-  <div class="home-message glass">
+  </header>  <div class="home-message glass fade-up">
     <p>Every design you see here was born from the real stories of real people. From struggles to strength, from heartbreak to hustle, I translate their experiences into powerful clothing. This brand isn’t just mine — it's theirs too. And we give back, always: 20% of our profits go directly to people in need. Wear a story. Share a purpose.</p>
-  </div>  
-
-  <section id="story" class="glass">
+  </div>  <section id="story" class="glass fade-up">
     <h2>ABOUT UV STORE</h2>
     <p class="about">UV Store is more than just a clothing brand — it's a movement. We believe that behind every great design lies a greater story. By channeling life’s rawest emotions into art, we create clothing that speaks to the soul and inspires the streets.</p>
-  </section>  
-
-  <section id="design">
+  </section>  <section id="design">
     <h2>OUR DESIGNS</h2>
     <div class="designs">
-      <img src="image2.jpg" alt="Design 2">
-      <img src="image3.jpg" alt="Design 3">
-      <img src="image4.jpg" alt="Design 4">
-      <img src="image5.jpg" alt="Design 5">
-      <img src="image6.jpg" alt="Design 6">
+      <div class="design-block fade-up">
+        <img src="image2.jpg" alt="Design 2">
+        <div class="glass">
+          <p>Design inspired by a story of hustle through hardship — where every setback became fuel.</p>
+        </div>
+      </div>
+      <div class="design-block fade-up">
+        <img src="image3.jpg" alt="Design 3">
+        <div class="glass">
+          <p>A tale of heartache turned into healing. This design speaks louder than words.</p>
+        </div>
+      </div>
+      <div class="design-block fade-up">
+        <img src="image4.jpg" alt="Design 4">
+        <div class="glass">
+          <p>Crafted from the life of someone who lost everything — and rebuilt from scratch.</p>
+        </div>
+      </div>
+      <div class="design-block fade-up">
+        <img src="image5.jpg" alt="Design 5">
+        <div class="glass">
+          <p>Design built from real street stories — raw, resilient, and rebellious.</p>
+        </div>
+      </div>
+      <div class="design-block fade-up">
+        <img src="image6.jpg" alt="Design 6">
+        <div class="glass">
+          <p>The art of a warrior’s comeback — this one honors the ones who never gave up.</p>
+        </div>
+      </div>
     </div>
-  </section>  
-
-  <section id="contact" class="glass">
+  </section>  <section id="contact" class="glass fade-up">
     <h2>CONTACT US</h2>
     <p>Subscribe to our newsletter and be the first to hear real stories and exclusive drops.</p>
     <form action="https://formspree.io/f/mgvznnpg" method="POST">
       <input type="email" name="email" placeholder="Your email address" required>
       <input type="submit" value="Subscribe">
     </form>
-  </section>  
-
-  <footer>
-    <p>Follow us on <a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">Instagram</a></p>
-    <p>Contact: <a href="mailto:yuvarajbharathy25@gmail.com">yuvarajbharathy25@gmail.com</a></p>
+  </section>  <footer>
+    <p><a href="https://www.instagram.com/uvstore_official/profilecard/?igsh=a3hkYXNtNnN1NXVq" target="_blank">Instagram</a></p>
+    <p><a href="mailto:yuvarajbharathy25@gmail.com">yuvarajbharathy25@gmail.com</a></p>
     <p>&copy; 2025 UV STORE. All rights reserved.</p>
-  </footer>
-</body></html>
+  </footer>  <script>
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script></body>
+</html>
