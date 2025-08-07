@@ -593,7 +593,9 @@
   <section id="join" class="fade-element">
     <h2>Join the Inner Circle</h2>
     <p>By invitation only. Limited access.</p>
-    <form action="https://formspree.io/f/mgvznnpg" method="POST" class="subscribe-form" target="_blank">
+    <form action="https://formspree.io/f/mgvznnpg" method="POST" class="subscribe-form">
+      <!-- Hidden redirect field -->
+      <input type="hidden" name="_redirect" value="thank-you.html" />
       <input type="email" name="email" placeholder="Your email address" required aria-label="Email address" />
       <button type="submit">Request Access</button>
     </form>
